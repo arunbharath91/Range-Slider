@@ -1,0 +1,20 @@
+@import url('assets/scss/range-slider.scss');
+
+html {
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  vertical-align: baseline;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition: all 0.3s ease;
+}
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px;
+  color: #5b5b5b;
+  line-height: 26px;
+  letter-spacing: 0.5px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
