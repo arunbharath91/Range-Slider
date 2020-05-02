@@ -18,6 +18,8 @@
 <body>
   <div class="container">
     <app-range tooltip="true" step="10" onChange="triggerApi(this)" min="0" max="1000" value="[50,500]"></app-range>
+<div id="value-appender"></div>
+
     <pre style="margin-left:15px">
      <code>
 configuration :
@@ -45,7 +47,7 @@ will be taken.
   </div>
   <script>
     function triggerApi(elem) {
-      console.log(elem.getAttribute('value'))
+      document.querySelector('#value-appender').innerHTML = elem.getAttribute('value');
     }
   </script>
 
