@@ -109,7 +109,7 @@ const defaultOptions:IOptions = {
 
   this.thumbLeft.style.left = `${percent}%`;
   this.range.style.left = `${percent}%`;
-  this.tooltips[0].innerHTML = elem.value;
+  this.tooltips[0].innerHTML = this.shortNumber(elem.value);
   this.options.value = [Number(elem.value), rightValue];
   }
 
@@ -125,10 +125,37 @@ const defaultOptions:IOptions = {
 
   this.thumbRight.style.right = `${100-percent}%`;
   this.range.style.right = `${100-percent}%`;
-  this.tooltips[1].innerHTML = elem.value;
+  this.tooltips[1].innerHTML = this.shortNumber(elem.value);
   this.options.value = [leftValue, Number(elem.value)];
   }
 
+
+  shortNumber(num: number) {
+    let abs = Math.abs(num);
+    const rounder = Math.pow(10, 1);
+    let key = '';
+
+    const powers = [
+      { key: 'Q', value: Math.pow(10, 15) },
+      { key: 'T', value: Math.pow(10, 12) },
+      { key: 'B', value: Math.pow(10, 9) },
+      { key: 'M', value: Math.pow(10, 6) },
+      { key: 'K', value: 1000 }
+    ];
+
+    for (const power of powers) {
+      let reduced = abs / power.value;
+      reduced = Math.round(reduced * rounder) / rounder;
+      if (reduced >= 1) {
+        abs = reduced;
+        key = power.key;
+        break;
+      }
+    }
+    return abs + key;
+  }
+
 }
+
 
 window.customElements.define("app-range", RangeSlider);
