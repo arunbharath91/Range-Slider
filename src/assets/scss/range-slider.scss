@@ -17,13 +17,22 @@ body {
   border-radius: 3px;
   margin-top: 20px;
 }
+app-range {
+  min-width: 280px;
+  display: inline-block;
+  position: relative;
+}
+app-range > range-slider, app-range > range-slider > range-track,
+app-range > range-slider > range-progress, app-range > range-slider > range-handle,
+app-range > range-input{
+display: block;
+}
 
 app-range > range-slider {
   position: relative;
   z-index: 1;
   height: 5px;
   margin: 0 15px;
-  display: block;
 }
 
 app-range > range-slider > range-track {
@@ -35,7 +44,6 @@ app-range > range-slider > range-track {
   z-index: 1;
   border-radius: 5px;
   background-color: #c6aee7;
-  display: block;
 }
 
 app-range > range-slider > range-progress {
@@ -61,12 +69,12 @@ app-range > range-slider > range-handle {
 
 app-range > range-slider > range-handle.left {
   left: 25%;
-  transform: translate(-15px, -8px);
+  transform: translate(-10px, -8px);
 }
 
 app-range > range-slider > range-handle.right {
   right: 25%;
-  transform: translate(15px, -8px);
+  transform: translate(10px, -8px);
 }
 
 app-range > range-slider > range-handle > range-tooltip {
@@ -120,23 +128,23 @@ app-range input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   cursor: move; /* fallback if grab cursor is unsupported */
   cursor: grab;
-  cursor: -moz-grab;
   cursor: -webkit-grab;
 }
 
 app-range input[type="range"]::-webkit-slider-thumb:active {
   cursor: grabbing;
-  cursor: -moz-grabbing;
   cursor: -webkit-grabbing;
 }
 
 app-range input[type="range"]::-moz-range-thumb {
   pointer-events: all;
   -moz-appearance: none;
+  cursor: move; /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
 }
 
-app-range {
-  min-width: 280px;
-  display: inline-block;
-  position: relative;
+app-range input[type="range"]::-moz-range-thumb:active{
+  cursor: grabbing;
+  cursor: -moz-grabbing;
 }
