@@ -9,7 +9,7 @@
   <meta name="description" content="Range Slider by Arun Bharath" />
   <meta name="keywords" content="Range Slider by arun bharath" />
   <meta name="author" content="Arun Bharath">
-  <link rel="shortcut icon" href="assets/images/favicon.ico" />
+  <link rel="shortcut icon" href="../../images/favicon.ico" />
   <meta charset="UTF-8">
   <!-- CSS Bootstrap & Custom -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap" rel="stylesheet">
@@ -17,10 +17,7 @@
 
 <body>
   <div class="container">
-    <app-range tooltip="true" update="triggerApi(this)" width="200" min="0" max="100" value="[0,100]"></app-range>
-
-    <div id="value-appender"></div>
-
+    <app-range tooltip="true" step="10" onChange="triggerApi(this)" min="0" max="1000" value="[50,500]"></app-range>
     <pre style="margin-left:15px">
      <code>
 configuration :
@@ -31,7 +28,7 @@ configuration :
   tooltip?: boolean;
   step?: number;
   value?: number[];
-  update?:Function
+  onChange?:Function
 }
 3) if attribute option not passed,
 defaultOptions = {
@@ -42,13 +39,13 @@ defaultOptions = {
   value: [0, 100]
 }
 will be taken.
-4) update event support
+4) onChange event support
 </code>
 </pre>
   </div>
   <script>
     function triggerApi(elem) {
-      document.querySelector('#value-appender').innerHTML = elem.getAttribute('value');
+      console.log(elem.getAttribute('value'))
     }
   </script>
 
