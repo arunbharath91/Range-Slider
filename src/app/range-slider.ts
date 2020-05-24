@@ -28,7 +28,7 @@ const defaultOptions:IOptions = {
     this.config();
   }
 
-  config() {
+  private config() {
     const getAllAttr:any = {};
     Array.from(this.attributes).forEach((item) => {
       if(/\S/.test(item.value)) {
@@ -39,14 +39,14 @@ const defaultOptions:IOptions = {
     this.setDefaultAttr();
   }
 
-  setDefaultAttr(){
+  private setDefaultAttr(){
     this.setAttribute('min', (this.options.min as any).toString());
     this.setAttribute('max', (this.options.max as any).toString());
     this.setAttribute('value', `[${this.options.value}]`);
     this.projectTemplate();
   }
 
-  projectTemplate() {
+  protected projectTemplate() {
   const inputs = `
   <range-input>
   <input type="range" class="handleBarRef1" name="points1" min="${this.options.min}" max="${this.options.max}" value="${(this.options.value as any)[0]}" />
@@ -73,7 +73,7 @@ const defaultOptions:IOptions = {
   this.initRange();
   }
 
-  initRange() {
+  private initRange() {
   this.inputLeft = (this.querySelector('.handleBarRef1') as HTMLElement);
   this.inputRight = (this.querySelector('.handleBarRef2') as HTMLElement);
 
@@ -98,7 +98,7 @@ const defaultOptions:IOptions = {
   });
   }
 
-  setLeftValue(elem: any) {
+  private setLeftValue(elem: any) {
   let min = parseInt(elem.min);
   let max = parseInt(elem.max);
   let rightValue = Number(this.inputRight.getAttribute('value'));
@@ -113,7 +113,7 @@ const defaultOptions:IOptions = {
   this.options.value = [Number(elem.value), rightValue];
   }
 
-  setRightValue(elem: any) {
+  private setRightValue(elem: any) {
   let min = parseInt(elem.min);
   let max = parseInt(elem.max);
   let leftValue = Number(this.inputLeft.getAttribute('value'));
@@ -130,7 +130,7 @@ const defaultOptions:IOptions = {
   }
 
 
-  shortNumber(num: number) {
+  private shortNumber(num: number) {
     let abs = Math.abs(num);
     const rounder = Math.pow(10, 1);
     let key = '';
@@ -156,6 +156,5 @@ const defaultOptions:IOptions = {
   }
 
 }
-
 
 window.customElements.define("app-range", RangeSlider);
